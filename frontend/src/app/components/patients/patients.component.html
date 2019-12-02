@@ -1,0 +1,97 @@
+<div class="container">
+
+  <button type="button" class="btn btn-primary" (click)="addMode = !addMode" *ngIf="!addMode">Add Patient</button>
+
+
+  <div *ngIf="addMode">
+    <form>
+      <div class="form-group row">
+        <label for="firstName" class="col-sm-2 col-form-label">First name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="firstName">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="lastName" class="col-sm-2 col-form-label">Last name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="lastName">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="sex" class="col-sm-2 col-form-label">Sex</label>
+        <div class="col-sm-6">
+          <select type="text" class="form-control" id="sex">
+            <option selected disabled>Select sex</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="lastName" class="col-sm-2 col-form-label">Last name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="lastName">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="email">
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="addMode = !addMode">Save</button>
+      <button type="button" class="btn btn-primary" (click)="addMode = !addMode">Cancel</button>
+
+
+    </form>
+  </div>
+
+  <div class="row">
+
+   <div class="col-sm">
+
+      <table class="table table-hover">
+        <thead>
+        <tr class="bg-secondary text-light">
+          <th scope="col">#</th>
+          <th scope="col">First name</th>
+          <th scope="col">Last name</th>
+          <th scope="col">Sex</th>
+          <th scope="col">Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients | async; let i = index">
+          <th scope="row">{{i}}</th>
+          <td>
+            {{patient.firstName}}
+          </td>
+          <td>
+            {{patient.lastName}}
+          </td>
+          <td>
+            {{patient.sex}}
+          </td>
+          <td>
+            {{patient.email}}
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+<!--      <ul class="patients__list">-->
+<!--        <li class="patients__item">Patient name</li>-->
+<!--        <li *ngFor="let patient of patients | async">{{patient.firstName}} {{patient.lastName}}</li>-->
+<!--      </ul>-->
+    </div>
+<!--    <div class="col-sm">-->
+<!--    </div>-->
+  </div>
+</div>
+

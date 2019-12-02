@@ -1,0 +1,15 @@
+.header {
+    background-color: #2e303d;
+    text-align: right;
+    height: 60px;
+}
+
+.main-nav {
+    &__item {
+        margin-right: 20px;
+        color: white;
+        line-height: 60px;
+    }
+}
+
+

@@ -1,0 +1,79 @@
+[
+  {"name" : "Pneumococcal vaccine for injection into muscle", "count" : "24690"},
+  {
+    "name" : "Aspiration and/or injection of large joint or joint capsule",
+    "count" : "21420"
+  },
+  {
+    "name" : "Urinalysis, manual test",
+    "count" : "20277"
+  },
+  {
+    "name" : "Therapeutic exercise to develop strength, endurance, range of motion, and flexibility, each 15 minutes",
+    "count" : "20259"
+  },
+  {
+    "name" : "Routine electrocardiogram (EKG) using at least 12 leads with interpretation and report",
+    "count" : "18266"
+  },
+  {
+    "name" : "Manual (physical) therapy techniques to 1 or more regions, each 15 minutes",
+    "count" : "18017"
+  },
+  {
+    "name" : "Hemoglobin A1C level",
+    "count" : "17374"
+  },
+  {
+    "name" : "Physical therapy evaluation",
+    "count" : "17303"
+  },
+  {
+    "name" : "X-ray of foot, minimum of 3 views",
+    "count" : "17167"
+  },
+  {
+    "name" : "Blood test, clotting time",
+    "count" : "15009"
+  },
+  {
+    "name" : "X-ray of knee, 3 views",
+    "count" : "13518"
+  },
+  {
+    "name" : "CT scan of abdomen and pelvis with contrast",
+    "count" : "13125"
+  },
+  {
+    "name" : "CT scan chest",
+    "count" : "12434"
+  },
+  {
+    "name" : "Ultrasound scan of veins of one arm or leg or limited including assessment of compression and functional maneuvers",
+    "count" : "12237"
+  },
+  {
+    "name" : "Ultrasonic guidance imaging supervision and interpretation for insertion of needle",
+    "count" : "12028"
+  },
+  {
+    "name" : "X-ray of chest, 1 view, front",
+    "count" : "11905"
+  },
+  {
+    "name" : "Measurement of field of vision during daylight conditions",
+    "count" : "11588"
+  },
+  {
+    "name" : "Eye and medical examination for diagnosis and treatment, established patient",
+    "count" : "11120"
+  },
+  {
+    "name" : "X-ray of wrist, minimum of 3 views",
+    "count" : "10535"
+  },
+  {
+    "name" : "Diagnostic imaging of retina",
+    "count" : "10077"
+  }
+]
