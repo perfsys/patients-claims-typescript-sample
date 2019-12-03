@@ -25,4 +25,17 @@ export class PatientsService {
       })
     )
   }
+
+  public postData(data){
+    //    const body = {firstName:'fdgdfgdfg', lastName: 'dfgdfgdfg', birthday: 'gdfgdfgdfg', sex: 'fdgdfgdfg', address: 'dfgdfgdfg', email: 'dfgdfgdfgdfg'}
+          console.log('body', data)
+          return this.httpClient.post('http://localhost:3000/patient', data)
+            .pipe(
+              map((response) => {
+                console.log("test tst test", response);
+                return response;
+              })
+            )
+      }
+        
 }

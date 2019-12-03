@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { PatientsRoutingModule } from './patients-routing.module';
 import { PatientsComponent } from '../../components/patients/patients.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [PatientsComponent],
   imports: [
     CommonModule,
-    PatientsRoutingModule
+    PatientsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PatientsModule { }

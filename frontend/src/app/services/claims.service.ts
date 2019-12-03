@@ -8,7 +8,7 @@ import { ProcedureModel } from '../models/procedure.model';
 @Injectable({
   providedIn: 'root'
 })
-export class CodesService {
+export class ClaimService {
 
   private urlCodes: string = './assets/database/codes.json';
   private urlProcedures: string = './assets/database/procedures.json';
@@ -41,7 +41,6 @@ export class CodesService {
 
 
   public postData(){
-         
    const body = {firstName:'fdgdfgdfg', lastName: 'dfgdfgdfg', birthday: 'gdfgdfgdfg', sex: 'fdgdfgdfg', address: 'dfgdfgdfg', email: 'dfgdfgdfgdfg'}
       console.log('body', body)
       return this.httpClient.post('http://localhost:3000/patient', body)
