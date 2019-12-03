@@ -7,3 +7,6 @@ mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useU
 
 require('./models/patient.model')
 require('./models/claim.model')
+
+module.exports = mongoose;
+

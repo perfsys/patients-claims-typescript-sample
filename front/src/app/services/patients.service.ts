@@ -9,6 +9,7 @@ import {map} from 'rxjs/operators';
 })
 export class PatientsService {
   private HOST: string = `${document.location.protocol}//${document.location.hostname}:3000`
+  // private HOST: string = `http://localhost:3000`
 
   constructor(
     private httpClient: HttpClient

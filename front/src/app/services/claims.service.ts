@@ -15,6 +15,7 @@ export class ClaimsService {
   private urlProcedures: string = './assets/database/procedures.json';
 
   private HOST: string = `${document.location.protocol}//${document.location.hostname}:3000`
+  // private HOST: string = `http://localhost:3000`
 
   constructor(
     private httpClient: HttpClient

@@ -1,13 +1,11 @@
 const express = require('express');
-const database = require('../database')
+const mongoose = require('../database')
 const router = express.Router();
-const mongoose = require('mongoose');
-const conn = mongoose.connection;
 const Claim = mongoose.model('Claim');
 
 
 router.get('/', (req, res) => {
-  res.json('Hello world')
+    res.json('Hello world')
 });
 
 
@@ -24,8 +22,9 @@ router.post('/', (req, res) => {
         console.log("error", err)
       } else {
         console.log('claim created')
+          res.status(200);
+          res.send('Success');
       }
-      conn.close()
     })
 });
 

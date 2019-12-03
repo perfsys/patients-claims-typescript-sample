@@ -1,8 +1,6 @@
 const express = require('express');
-const database = require('../database')
+const mongoose = require('../database')
 const router = express.Router();
-const mongoose = require('mongoose');
-const conn = mongoose.connection;
 const Patient = mongoose.model('Patient');
 
 
@@ -28,8 +26,9 @@ router.post('/', (req, res) => {
         console.log("error", err)
       } else {
         console.log('patient created')
+          res.status(200);
+          res.send('Success');
       }
-        conn.close()
     })
 });
 
