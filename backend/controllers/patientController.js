@@ -21,14 +21,12 @@ router.post('/', (req, res) => {
     email: req.body.email
   })
 
-  // console.log('works function patient', patient)
-
   patient
     .save(function (err) {
       if(err) {
         console.log("error", err)
       } else {
-        console.log('WORKS PATIENT!!!!!')
+        console.log('patient created')
       }
 
     })
@@ -37,7 +35,6 @@ router.post('/', (req, res) => {
 router.get('/get', function(req, res) {
   Patient.find(function(err, patients) {
     if (err) return res.error(err);
-    console.log(patients);
     res.json(patients);
   })
 })

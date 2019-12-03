@@ -5,10 +5,10 @@ const claimSchema = new mongoose.Schema({
     type: String
   },
   icdCodes: {
-    type: Array
+    type: [String]
   },
   procedures: {
-    type: Array
+    type: [String]
   }
 })
 

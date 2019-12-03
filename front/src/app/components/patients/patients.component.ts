@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientsService} from '../../services/patients.service';
-import { Observable } from 'rxjs';
-import { PatientModel } from '../../models/patient.model';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -27,23 +25,16 @@ export class PatientsComponent implements OnInit {
   })
 
   ngOnInit() {
-    this.patientsService.getAll().subscribe(val => console.log('value', JSON.stringify(val), this.patients = [...val].reverse()));
-    console.log('patients +++', this.patients)
+    this.patientsService.getAll().subscribe(val => this.patients = [...val].reverse());
   }
 
   public onSave() {
     this.addMode = false;
-    console.log('dsfdsfsdf')
-    console.log("this.patientForm", this.patientForm)
 
     this.patientsService.postData(this.patientForm.value)
       .subscribe((res) => {
-        console.log("result", res)
       });
-
-      // console.log('this.patients', Object.assign(this.patients))
       this.patients.unshift(this.patientForm.value);
       this.patientForm.reset()
     }
-
 }

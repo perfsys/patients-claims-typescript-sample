@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import {ClaimsService} from "../../services/claims.service";
 import {PatientsService} from '../../services/patients.service';
 import { FormBuilder } from '@angular/forms';
@@ -11,7 +10,6 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ClaimsComponent implements OnInit {
   addMode: boolean = false;
-
   codeArray: Array<string> = [];
   procedureArray: Array<string> = [];
   addCodeMode: boolean = false;
@@ -20,7 +18,6 @@ export class ClaimsComponent implements OnInit {
   patients: any = [];
   procedures: any = [];
   claims: any = [];
-
 
   constructor(
     private claimsService: ClaimsService,
@@ -31,32 +28,23 @@ export class ClaimsComponent implements OnInit {
 
   claimForm = this.formBuilder.group({
     patient: [''],
+    icdCodes: [this.codeArray],
+    procedures: [this.procedureArray]
   })
 
   ngOnInit() {
     this.codes = this.claimsService.getAllCodes();
-    console.log('codes', this.codes)
-    // this.patientsService.getAll().subscribe(val => console.log('value', JSON.stringify(val), this.patients = [...val].reverse()));
-
     this.patients = this.patientsService.getAll();
-    console.log('patients', this.patients)
-
     this.procedures = this.claimsService.getAllProcedures();
-    console.log('this.procedures', this.procedures)
-
-    this.claimsService.getAllClaims().subscribe(val => console.log('value', JSON.stringify(val), this.claims = [...val].reverse()));
-    console.log('this.claims', this.claims)
+    this.claimsService.getAllClaims().subscribe(val => this.claims = [...val].reverse());
   }
 
-
   public addCode(event) {
-    console.log('test works', event.target.value);
     this.codeArray.push(event.target.value);
     this.addCodeMode = false
   };
 
   public addProcedure(event) {
-    console.log('test works', event.target.value);
     this.procedureArray.push(event.target.value);
     this.addProcedureMode = false
   };
@@ -69,14 +57,13 @@ export class ClaimsComponent implements OnInit {
     this.procedureArray.splice(index, 1);
   }
 
-  // public onSave() {
-  //   this.addMode = !this.addMode
-  //   console.log('dsfdsfsdf')
-  //   console.log("this.claimForm", this.claimForm)
-    
-  //   this.claimsService.postData()
-  //     .subscribe((res) => {
-  //       console.log("result", res)
-  //     })
-  // }
+  public onSave() {
+    this.addMode = false;
+    this.claimsService.postData(this.claimForm.value)
+      .subscribe((res) => {
+      });
+      this.claims.unshift(this.claimForm.value);
+      this.claimForm.reset()
+      this.codeArray = this.procedureArray = [];
+  }
 }

@@ -46,24 +46,18 @@ export class ClaimsService {
       .pipe(
         map((response: ClaimModel[]) => {
           return response.map((el) => {
-            return new ClaimModel(el.patient, el.isdCode, el.procedure)
+            return new ClaimModel(el.patient, el.icdCodes, el.procedures)
           })
       })
     )
   }
 
-
-
-  public postData(){
-      console.log('postData works')
-//    const body = {firstName:'fdgdfgdfg', lastName: 'dfgdfgdfg', birthday: 'gdfgdfgdfg', sex: 'fdgdfgdfg', address: 'dfgdfgdfg', email: 'dfgdfgdfgdfg'}
-//       console.log('body', body)
-//       return this.httpClient.post('http://localhost:3000/patient', body)
-//         .pipe(
-//           map((response) => {
-//             console.log("test tst test", response);
-//             return response;
-//           })
-//         )
-  }
+  public postData(data){
+    return this.httpClient.post('http://localhost:3000/claim', data)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      )
+    }
 }

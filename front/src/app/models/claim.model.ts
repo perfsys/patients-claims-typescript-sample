@@ -1,7 +1,7 @@
 export class ClaimModel {
     constructor(
         public patient: string,
-        public isdCode: any,
-        public procedure: any,
+        public icdCodes: Array<string>,
+        public procedures: Array<string>,
     ) {}
 }

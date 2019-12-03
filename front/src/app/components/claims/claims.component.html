@@ -32,7 +32,7 @@
       <div class="form-group row" *ngIf="codeArray.length > 0">
         <div class="col-sm-2 col-form-label"></div>
         <div class="col-sm-6">
-          <button type="button" class="code-button btn btn-secondary to-add-offer__buttons" *ngFor="let code of codeArray; let i = index">{{code}}<span class="to-add-offer__buttons-delete" (click)="deleteCode(i)" disabled>X</span>
+          <button type="button" class="code-button btn btn-secondary claim__buttons" *ngFor="let code of codeArray; let i = index">{{code}}<span class="claim__buttons-delete" (click)="deleteCode(i)" disabled>X</span>
           </button>
         </div>
       </div>
@@ -55,7 +55,7 @@
         <div class="form-group row" *ngIf="procedureArray.length > 0">
           <div class="col-sm-2 col-form-label"></div>
           <div class="col-sm-6">
-            <button type="button" class="code-button btn btn-secondary to-add-offer__buttons" *ngFor="let procedure of procedureArray; let i = index">{{procedure}}<span class="to-add-offer__buttons-delete" (click)="deleteProcedure(i)" disabled>X</span>
+            <button type="button" class="code-button btn btn-secondary claim__buttons" *ngFor="let procedure of procedureArray; let i = index">{{procedure}}<span class="claim__buttons-delete" (click)="deleteProcedure(i)" disabled>X</span>
             </button>
           </div>
         </div>
@@ -72,7 +72,6 @@
   <div class="row">
 
     <div class="col-sm">
-
       <table class="table table-hover">
         <thead>
         <tr class="bg-secondary text-light">
@@ -83,15 +82,18 @@
         </tr>
         </thead>
         <tbody>
-        <!-- <tr *ngFor="let patient of patients | async; let i = index">
+        <tr *ngFor="let claim of claims; let i = index">
           <th scope="row">{{i}}</th>
           <td>
+              {{claim.patient}}
           </td>
           <td>
+            <span class="claim__code-item" *ngFor="let icdCode of claim.icdCodes">{{icdCode}}</span>
           </td>
           <td>
+            <span class="claim__code-item" *ngFor="let procedure of claim.procedures">{{procedure}}</span>
           </td>
-        </tr> -->
+        </tr>
         </tbody>
       </table>
     </div>
