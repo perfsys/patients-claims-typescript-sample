@@ -33,6 +33,7 @@ export class PatientsComponent implements OnInit {
 
     this.patientsService.postData(this.patientForm.value)
       .subscribe((res) => {
+        console.log(`Patient saved ${res}`);
       });
       this.patients.unshift(this.patientForm.value);
       this.patientForm.reset()

@@ -10,7 +10,7 @@
         <div class="col-sm-6">
           <select type="text" class="form-control" id="patient" formControlName="patient">
             <option selected disabled>Select patient</option>
-            <option *ngFor="let patient of patients | async; let i = index">{{patient.firstName}} {{patient.lastName}}</option>
+            <option *ngFor="let patient of patients | async; let i = index" [value]="patient.firstName + ' ' + patient.lastName">{{patient.firstName}} {{patient.lastName}}</option>
           </select>
         </div>
       </div>
@@ -25,7 +25,7 @@
             <option *ngFor="let code of codes | async; let i = index" [value]="code.code">{{code.code}}, {{code.desc}}</option>
           </select>
 
-          
+
         </div>
       </div>
 
@@ -42,16 +42,16 @@
           <label for="code" class="col-sm-2 col-form-label">ICD Code</label>
           <div class="col-sm-6">
               <button type="button" class="btn btn-primary" *ngIf="!addProcedureMode" (click)="addProcedureMode = !addProcedureMode">Add Procedure</button>
-  
+
             <select type="text" class="form-control" *ngIf="addProcedureMode" id="code" (change)="addProcedure($event)">
              <option selected disabled>Select Procedure</option>
               <option *ngFor="let procedure of procedures | async; let i = index" [value]="procedure.count">{{procedure.name}}</option>
             </select>
-  
-            
+
+
           </div>
         </div>
-  
+
         <div class="form-group row" *ngIf="procedureArray.length > 0">
           <div class="col-sm-2 col-form-label"></div>
           <div class="col-sm-6">
@@ -59,7 +59,7 @@
             </button>
           </div>
         </div>
-  
+
 
 
       <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
