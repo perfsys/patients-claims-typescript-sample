@@ -25,8 +25,8 @@ router.post('/', (req, res) => {
       } else {
         console.log('claim created')
       }
-
-    }).then(() => {return conn.close()});
+      conn.close()
+    })
 });
 
 router.get('/get', function(req, res) {

@@ -29,8 +29,8 @@ router.post('/', (req, res) => {
       } else {
         console.log('patient created')
       }
-
-    }).then(() => {return conn.close()})
+        conn.close()
+    })
 });
 
 router.get('/get', function(req, res) {
