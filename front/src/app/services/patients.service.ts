@@ -8,15 +8,14 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PatientsService {
-
-  private url: string = 'http://localhost:3000/patient/get';
+  private HOST: string = `${document.location.protocol}//${document.location.hostname}:3000`
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
   public getAll(): Observable<any> {
-    return this.httpClient.get(this.url)
+    return this.httpClient.get(`${this.HOST}/patient/get`)
       .pipe(
         map((response: PatientModel[]) => {
           return response.map((el) => {
@@ -27,12 +26,12 @@ export class PatientsService {
   }
 
   public postData(data){
-    return this.httpClient.post('http://localhost:3000/patient', data)
+    return this.httpClient.post(`${this.HOST}/patient`, data)
       .pipe(
         map((response) => {
           return response;
         })
       )
     }
-        
+
 }

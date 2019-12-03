@@ -13,8 +13,9 @@ export class ClaimsService {
 
   private urlCodes: string = './assets/database/codes.json';
   private urlProcedures: string = './assets/database/procedures.json';
-  private urlClaims: string = 'http://localhost:3000/claim/get';
-  
+
+  private HOST: string = `${document.location.protocol}//${document.location.hostname}:3000`
+
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -42,7 +43,7 @@ export class ClaimsService {
   }
 
   public getAllClaims(): Observable<any> {
-    return this.httpClient.get(this.urlClaims)
+    return this.httpClient.get(`${this.HOST}/claim/get`)
       .pipe(
         map((response: ClaimModel[]) => {
           return response.map((el) => {
@@ -53,7 +54,7 @@ export class ClaimsService {
   }
 
   public postData(data){
-    return this.httpClient.post('http://localhost:3000/claim', data)
+    return this.httpClient.post(`${this.HOST}/claim`, data)
       .pipe(
         map((response) => {
           return response;
