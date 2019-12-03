@@ -6,8 +6,6 @@ phases:
       docker: 18  
   pre_build:  
     commands:  
-      - export ECR_URL_BACKEND=$ECR_URL_BACKEND
-      - echo ${REPOSITORY_URI}
       - echo Logging in to Amazon ECR...  
       - aws --version  
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)  
