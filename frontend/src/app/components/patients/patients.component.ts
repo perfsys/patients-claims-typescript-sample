@@ -11,7 +11,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class PatientsComponent implements OnInit {
   addMode: boolean = false;
-  patients: Observable<PatientModel[]>;
+  patients: any = [];
 
   constructor(
     private patientsService: PatientsService,

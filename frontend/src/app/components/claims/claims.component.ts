@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import {ClaimsService} from "../../services/claims.service";
 import {PatientsService} from '../../services/patients.service';
 import { FormBuilder } from '@angular/forms';
-import { ClaimModel } from 'src/app/models/claim.model';
 
 @Component({
   selector: 'app-claims',
@@ -20,7 +19,7 @@ export class ClaimsComponent implements OnInit {
   codes: any = [];
   patients: any = [];
   procedures: any = [];
-  claims: Observable<ClaimModel[]>;
+  claims: any = [];
 
 
   constructor(
