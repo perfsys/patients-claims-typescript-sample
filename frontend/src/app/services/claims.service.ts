@@ -4,15 +4,17 @@ import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 import { CodeModel } from '../models/code.model';
 import { ProcedureModel } from '../models/procedure.model';
+import { ClaimModel } from '../models/claim.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClaimService {
+export class ClaimsService {
 
   private urlCodes: string = './assets/database/codes.json';
   private urlProcedures: string = './assets/database/procedures.json';
-
+  private urlClaims: string = 'http://localhost:3000/claim/get';
+  
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -39,16 +41,29 @@ export class ClaimService {
       )
   }
 
+  public getAllClaims(): Observable<any> {
+    return this.httpClient.get(this.urlClaims)
+      .pipe(
+        map((response: ClaimModel[]) => {
+          return response.map((el) => {
+            return new ClaimModel(el.patient, el.isdCode, el.procedure)
+          })
+      })
+    )
+  }
+
+
 
   public postData(){
-   const body = {firstName:'fdgdfgdfg', lastName: 'dfgdfgdfg', birthday: 'gdfgdfgdfg', sex: 'fdgdfgdfg', address: 'dfgdfgdfg', email: 'dfgdfgdfgdfg'}
-      console.log('body', body)
-      return this.httpClient.post('http://localhost:3000/patient', body)
-        .pipe(
-          map((response) => {
-            console.log("test tst test", response);
-            return response;
-          })
-        )
+      console.log('postData works')
+//    const body = {firstName:'fdgdfgdfg', lastName: 'dfgdfgdfg', birthday: 'gdfgdfgdfg', sex: 'fdgdfgdfg', address: 'dfgdfgdfg', email: 'dfgdfgdfgdfg'}
+//       console.log('body', body)
+//       return this.httpClient.post('http://localhost:3000/patient', body)
+//         .pipe(
+//           map((response) => {
+//             console.log("test tst test", response);
+//             return response;
+//           })
+//         )
   }
 }
