@@ -7,6 +7,7 @@ ENV NODE_ENV "production"
 # install and cache app dependencies
 COPY backend-ts/package.json /app/package.json
 RUN npm install
+RUN npm install -g typescript
 # add app
 COPY backend-ts/ /app
 
