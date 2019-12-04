@@ -128,8 +128,6 @@ mongoose
     // process.exit();
 });
 
-const router = express.Router();
-
 const options: cors.CorsOptions = {
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
     credentials: true,
