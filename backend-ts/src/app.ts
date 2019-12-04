@@ -121,7 +121,7 @@ mongoose
     .connect(mongoUrl, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
     .then(
         () => {
-            // fillDb();
+            fillDb();
         },
     ).catch(err => {
     console.log("MongoDB connection error. Please make sure MongoDB is running. " + err);
