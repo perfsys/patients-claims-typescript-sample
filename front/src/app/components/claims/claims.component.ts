@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ClaimsService} from "../../services/claims.service";
+import {ClaimsService} from '../../services/claims.service';
 import {PatientsService} from '../../services/patients.service';
 import { FormBuilder } from '@angular/forms';
 
@@ -9,11 +9,11 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./claims.component.scss']
 })
 export class ClaimsComponent implements OnInit {
-  addMode: boolean = false;
+  addMode = false;
   codeArray: Array<string> = [];
   procedureArray: Array<string> = [];
-  addCodeMode: boolean = false;
-  addProcedureMode: boolean = false;
+  addCodeMode = false;
+  addProcedureMode = false;
   codes: any = [];
   patients: any = [];
   procedures: any = [];
@@ -23,14 +23,13 @@ export class ClaimsComponent implements OnInit {
     private claimsService: ClaimsService,
     private patientsService: PatientsService,
     private formBuilder: FormBuilder
-    
   ) { }
 
   claimForm = this.formBuilder.group({
     patient: [''],
     icdCodes: [this.codeArray],
     procedures: [this.procedureArray]
-  })
+  });
 
   ngOnInit() {
     this.codes = this.claimsService.getAllCodes();
@@ -41,29 +40,36 @@ export class ClaimsComponent implements OnInit {
 
   public addCode(event) {
     this.codeArray.push(event.target.value);
-    this.addCodeMode = false
-  };
+    this.addCodeMode = false;
+  }
 
   public addProcedure(event) {
     this.procedureArray.push(event.target.value);
-    this.addProcedureMode = false
-  };
+    this.addProcedureMode = false;
+  }
 
   public deleteCode(index) {
     this.codeArray.splice(index, 1);
-  };
+  }
 
   public deleteProcedure(index) {
     this.procedureArray.splice(index, 1);
   }
 
+  private clearForm() {
+    this.claimForm.reset();
+    this.codeArray = [];
+    this.procedureArray = [];
+  }
+
   public onSave() {
     this.addMode = false;
+    this.claims.unshift(this.claimForm.value);
+
     this.claimsService.postData(this.claimForm.value)
       .subscribe((res) => {
-      });
-      this.claims.unshift(this.claimForm.value);
-      this.claimForm.reset()
-      this.codeArray = this.procedureArray = [];
+        this.clearForm();
+      }
+    );
   }
 }

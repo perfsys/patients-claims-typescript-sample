@@ -8,7 +8,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./patients.component.scss']
 })
 export class PatientsComponent implements OnInit {
-  addMode: boolean = false;
+  addMode = false;
   patients: any = [];
 
   constructor(
@@ -22,7 +22,7 @@ export class PatientsComponent implements OnInit {
     sex: [''],
     address: [''],
     email: ['']
-  })
+  });
 
   ngOnInit() {
     this.patientsService.getAll().subscribe(val => this.patients = [...val].reverse());
@@ -30,12 +30,12 @@ export class PatientsComponent implements OnInit {
 
   public onSave() {
     this.addMode = false;
+    this.patients.unshift(this.patientForm.value);
 
     this.patientsService.postData(this.patientForm.value)
       .subscribe((res) => {
-        console.log(`Patient saved ${res}`);
+        console.log(`Patient saved`);
+        this.patientForm.reset();
       });
-      this.patients.unshift(this.patientForm.value);
-      this.patientForm.reset()
     }
 }

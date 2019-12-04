@@ -11,10 +11,9 @@ import { ClaimModel } from '../models/claim.model';
 })
 export class ClaimsService {
 
-  private urlCodes: string = './assets/database/codes.json';
-  private urlProcedures: string = './assets/database/procedures.json';
-
-  private HOST: string = `${document.location.protocol}//${document.location.hostname}:3000`
+  private urlCodes = './assets/database/codes.json';
+  private urlProcedures = './assets/database/procedures.json';
+  private HOST = `${document.location.protocol}//${document.location.hostname}:3000`;
   // private HOST: string = `http://localhost:3000`
 
   constructor(
@@ -26,10 +25,10 @@ export class ClaimsService {
       .pipe(
         map((response: CodeModel[]) => {
           return response.map((el) => {
-            return new CodeModel(el.code, el.desc)
-          })
+            return new CodeModel(el.code, el.desc);
+          });
         })
-      )
+      );
   }
 
   public getAllProcedures(): Observable<any> {
@@ -37,10 +36,10 @@ export class ClaimsService {
       .pipe(
         map((response: ProcedureModel[]) => {
           return response.map((el) => {
-            return new ProcedureModel(el.name, el.count)
-          })
+            return new ProcedureModel(el.name, el.count);
+          });
         })
-      )
+      );
   }
 
   public getAllClaims(): Observable<any> {
@@ -48,18 +47,18 @@ export class ClaimsService {
       .pipe(
         map((response: ClaimModel[]) => {
           return response.map((el) => {
-            return new ClaimModel(el.patient, el.icdCodes, el.procedures)
-          })
+            return new ClaimModel(el.patient, el.icdCodes, el.procedures);
+          });
       })
-    )
+    );
   }
 
-  public postData(data){
+  public postData(data) {
     return this.httpClient.post(`${this.HOST}/claim`, data)
       .pipe(
         map((response) => {
           return response;
         })
-      )
+      );
     }
 }

@@ -7,4 +7,4 @@ export class PatientModel {
         public address: string,
         public email: string
     ) {}
-} 
+}
