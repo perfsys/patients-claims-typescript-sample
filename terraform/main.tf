@@ -64,7 +64,7 @@ output "ecr_frontend_url" {
 ##
 
 ## github access token
-resource "aws_codebuild_source_credential" "alex_soldatov" {
+resource "aws_codebuild_source_credential" "github_token" {
   auth_type = "PERSONAL_ACCESS_TOKEN"
   server_type = "GITHUB"
   token = var.personal_token
@@ -178,7 +178,7 @@ resource "aws_codebuild_project" "perfsys-patients-claims-backend" {
     buildspec       = "backend/buildspec.yml"
     auth {
         type = "OAUTH"
-        resource = aws_codebuild_source_credential.alex_soldatov.arn
+        resource = aws_codebuild_source_credential.github_token.arn
     }
   }
 }
@@ -220,7 +220,7 @@ resource "aws_codebuild_project" "perfsys-patients-claims-frontend" {
     buildspec       = "front/buildspec.yml"
     auth {
         type = "OAUTH"
-        resource = aws_codebuild_source_credential.alex_soldatov.arn
+        resource = aws_codebuild_source_credential.github_token.arn
     }
   }
 }
